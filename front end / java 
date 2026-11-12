@@ -1,0 +1,31 @@
+class ChessPiece
+{
+    String color;
+    String position;
+
+    ChessPiece(String color, String position)
+    {
+        this.color = color;
+        this.position = position;
+    }
+
+    String getColor()
+    {
+        return color;
+    }
+
+    String getPosition()
+    {
+        return position;
+    }
+
+    void setPosition(String position)
+    {
+        this.position = position;
+    }
+
+    boolean isValidMove(String from, String to)
+    {
+        return true;
+    }
+}
