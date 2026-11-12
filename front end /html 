@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>♟ Chess Game ♟</h1>
+
+    <div id="turn">White's Turn</div>
+
+    <div id="board"></div>
+
+    <button onclick="location.reload()">New Game</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
