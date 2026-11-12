@@ -1,0 +1,54 @@
+const express = require("express");
+
+const app = express();
+
+app.use(express.json());
+
+let game = {
+    board: [
+        ["r","n","b","q","k","b","n","r"],
+        ["p","p","p","p","p","p","p","p"],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["P","P","P","P","P","P","P","P"],
+        ["R","N","B","Q","K","B","N","R"]
+    ],
+    turn: "white"
+};
+
+// Get current game
+app.get("/game", (req, res) => {
+    res.json(game);
+});
+
+// Make a move
+app.post("/move", (req, res) => {
+
+    const { fromRow, fromCol, toRow, toCol } = req.body;
+
+    let piece = game.board[fromRow][fromCol];
+
+    if (piece === "") {
+        return res.json({
+            success: false,
+            message: "No piece at selected position"
+        });
+    }
+
+    game.board[toRow][toCol] = piece;
+    game.board[fromRow][fromCol] = "";
+
+    game.turn = game.turn === "white" ? "black" : "white";
+
+    res.json({
+        success: true,
+        board: game.board,
+        turn: game.turn
+    });
+});
+
+app.listen(3000, () => {
+    console.log("Chess backend running on http://localhost:3000");
+});
