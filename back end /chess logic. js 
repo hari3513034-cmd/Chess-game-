@@ -1,0 +1,21 @@
+function isValidMove(fromRow, fromCol, toRow, toCol) {
+
+    if (
+        fromRow < 0 || fromRow > 7 ||
+        fromCol < 0 || fromCol > 7 ||
+        toRow < 0 || toRow > 7 ||
+        toCol < 0 || toCol > 7
+    ) {
+        return false;
+    }
+
+    if (fromRow === toRow && fromCol === toCol) {
+        return false;
+    }
+
+    return true;
+}
+
+module.exports = {
+    isValidMove
+};
