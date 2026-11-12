@@ -1,0 +1,47 @@
+let game = {
+    board: [
+        ["r","n","b","q","k","b","n","r"],
+        ["p","p","p","p","p","p","p","p"],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["P","P","P","P","P","P","P","P"],
+        ["R","N","B","Q","K","B","N","R"]
+    ],
+
+    turn: "white"
+};
+
+function getGame() {
+    return game;
+}
+
+function makeMove(fromRow, fromCol, toRow, toCol) {
+
+    let piece = game.board[fromRow][fromCol];
+
+    if (piece === "") {
+        return {
+            success: false,
+            message: "No piece selected"
+        };
+    }
+
+    game.board[toRow][toCol] = piece;
+    game.board[fromRow][fromCol] = "";
+
+    game.turn = game.turn === "white" ? "black" : "white";
+
+    return {
+        success: true,
+        message: "Move successful",
+        board: game.board,
+        turn: game.turn
+    };
+}
+
+module.exports = {
+    getGame,
+    makeMove
+};
